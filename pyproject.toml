@@ -1,0 +1,24 @@
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[project]
+name = "chapter-anchor"
+version = "0.1.0"
+description = "Offline semantic review of draft video chapter titles against timestamped captions"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+dependencies = ["sentence-transformers>=5,<6", "socksio>=1,<2"]
+
+[project.optional-dependencies]
+test = ["pytest>=8,<10"]
+
+[project.scripts]
+chapter-anchor = "chapter_anchor.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/chapter_anchor"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
